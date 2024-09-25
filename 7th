@@ -1,0 +1,18 @@
+import pandas as pd
+
+# Example dataset
+data = {
+    'customer_id': [1, 2, 1, 3, 2],
+    'order_date': ['2024-01-01', '2024-01-03', '2024-02-10', '2024-01-15', '2024-02-05'],
+    'product_name': ['Product A', 'Product B', 'Product A', 'Product C', 'Product B'],
+    'order_quantity': [5, 2, 3, 1, 4]
+}
+
+# Create a DataFrame
+order_data = pd.DataFrame(data)
+
+# Convert order_date to datetime format
+order_data['order_date'] = pd.to_datetime(order_data['order_date'])
+
+# 1. Total number of orders made by each customer
+total_orders_per_customer = order_data.groupby('customer_id').size()
